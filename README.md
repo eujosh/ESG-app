@@ -1,20 +1,42 @@
-# 🇳🇬 Nigeria AI-Powered ESG Rating System
+# Nigeria AI-Powered ESG Rating System — Streamlit App
 
-[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://your-app-url.streamlit.app)  
-*(Badge will work after deployment)*
+## What this app does
+Interactive dashboard presenting the results of the thesis:
+"Developing an AI-Powered ESG Rating System for Nigeria"
 
-First systematic **AI-powered ESG rating framework** for Nigerian Exchange (NGX)-listed companies.  
-Built using NLP and machine learning on **250+ annual reports** across **50 companies (2020–2024)**.
+## Tabs
+1. **ESG Rankings** — Company league table with sector breakdown
+2. **Pillar Deep-Dive** — E, S, G sub-scores, disclosure rates, heatmap
+3. **Validation** — H1 Spearman correlation vs Risk Insights external ratings
+4. **Trends Over Time** — ESG score evolution 2020–2024
+5. **ESG vs Financial Performance** — H2 ANOVA + H3 scatter plots
+6. **Why Better** — Comparison table vs Risk Insights / Sustainalytics / MSCI
 
-## ✨ Features
+## Run locally
+```bash
+pip install -r requirements.txt
+streamlit run app.py
+```
+Then open http://localhost:8501 in your browser.
 
-- AI-generated composite ESG scores (E/S/G pillars with 30/30/40 weighting)
-- Interactive rankings, pillar deep-dive, and heatmap
-- Validation against external Risk Insights ratings (statistically significant correlation)
-- ESG score trends over time
-- ESG vs financial performance analysis (H2 & H3)
-- Comparison with existing ESG providers in Nigeria
-- Fully reproducible and transparent methodology
+## Deploy FREE on Streamlit Cloud (recommended)
+1. Create a free account at https://streamlit.io/cloud
+2. Push this folder to a GitHub repository
+3. Click "New app" → select your repo → set app.py as the main file
+4. Click Deploy — your app gets a public URL instantly
 
-## 🚀 Live Demo
-(Will be added after deployment on Streamlit Community Cloud)
+## File structure
+```
+esg_app/
+├── app.py               ← Main Streamlit application
+├── requirements.txt     ← Python dependencies
+├── README.md            ← This file
+└── data/
+    └── ESG_dataset_v2.csv   ← Your 250-row dataset
+```
+
+## Notes
+- To add your actual financial data (ROA, ROE), populate the
+  roaa_pct and roae_pct columns in ESG_dataset_v2.csv
+- The app automatically re-scores whenever the CSV is updated
+- For thesis defence: run locally and present from your laptop
