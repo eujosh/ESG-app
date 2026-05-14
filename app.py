@@ -512,6 +512,18 @@ with tab6:
                              "p-value":round(p,4),"Sig":stars,"N":len(tmp)})
     st.dataframe(pd.DataFrame(pillar_rows), hide_index=True, width='stretch')
 
+    # Pillar correlations with ROA
+    st.markdown("#### Pillar Sub-score Correlations with ROA")
+    pillar_rows = []
+    for col,nm in [("Env_Score_Raw","Environmental"),("Social_Score_Raw","Social"),
+                    ("Governance_Score_Raw","Governance"),("ESG_Score_Composite","Composite ESG")]:
+        tmp = df[[col,"ROA"]].dropna()
+        r,p = stats.spearmanr(tmp[col],tmp["ROA"])
+        stars = "***" if p<0.001 else ("**" if p<0.01 else ("*" if p<0.05 else ""))
+        pillar_rows.append({"Pillar/Score":nm,"Spearman ρ":round(r,3),
+                             "p-value":round(p,4),"Sig":stars,"N":len(tmp)})
+    st.dataframe(pd.DataFrame(pillar_rows), hide_index=True, width='stretch')
+
     st.markdown(f"""
     <div class="warning">
     ⚠️ <strong>H3 — Partially Supported:</strong> Significant positive correlation with ROE 
