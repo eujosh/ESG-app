@@ -189,14 +189,15 @@ with k5:
 st.divider()
 
 # ── Tabs ───────────────────────────────────────────────────────────────────────
-tab1, tab2, tab3, tab4, tab5, tab6, tab7 = st.tabs([
+tab1, tab2, tab3, tab4, tab5, tab6, tab7, tab8 = st.tabs([
     "📊 ESG Rankings",
     "📋 Descriptive Stats",
     "🔬 Pillar Analysis",
     "✅ H1 — Convergent Validity",
     "🏭 H2 — Sector Variation",
     "💰 H3 — Financial Performance",
-    "📈 Trends & Disclosure"
+    "📈 Trends & Disclosure",
+    "⚖️ Why Better Than Current System"
 ])
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -580,6 +581,55 @@ with tab7:
     <div class="insight">
     📈 <strong>Key Trend:</strong> Mean ESG score increased from 37.39 (2020) to 42.42 (2024), 
     a net gain of +{net:.2f} points. Governance continues to be the strongest pillar.
+    </div>
+    """, unsafe_allow_html=True)
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# TAB 8 — Why Better Than Current System
+# ═══════════════════════════════════════════════════════════════════════════════
+with tab8:
+    st.subheader("Why This System is Better Than What Currently Exists in Nigeria")
+
+    st.markdown("""
+    Nigeria currently has no official, systematic ESG rating system for all NGX-listed companies. 
+    Below is a direct comparison with the closest alternatives.
+    """)
+
+    comparison = {
+        'Dimension': [
+            'Nigerian Company Coverage', 'Methodology Transparency', 'Data Source',
+            'Cost to Access', 'Years of Coverage', 'ESG Pillar Detail',
+            'Contextual Relevance (Nigeria)', 'Academic Validation',
+            'Reproducibility', 'Updatability'
+        ],
+        'This AI System (Thesis)': [
+            '50 NGX-listed firms ✅', 'Fully documented (42 indicators) ✅',
+            'Annual reports + news + governance coding ✅', 'Free / open-source ✅',
+            '2020–2024 (5 years) ✅', 'E/S/G sub-scores + 42 indicators ✅',
+            'Adapted to Nigerian regulatory context ✅', 'Validated against Risk Insights ✅',
+            'Full Python codebase available ✅', 'Re-run annually ✅'
+        ],
+        'Risk Insights ESG GPS': [
+            '91 firms (paid) ⚠️', 'Proprietary / not published ❌', 'Undisclosed ❌',
+            'Paid subscription ❌', 'Annual (limited history) ⚠️', 'Single rating only ⚠️',
+            'African-focused ✅', 'No peer-reviewed validation ❌', 'Black-box ❌',
+            'Commercial update cycle ⚠️'
+        ],
+        'Sustainalytics / MSCI': [
+            '5 / 0 firms ❌', 'Partially documented ⚠️', 'Multiple sources ✅',
+            'Expensive institutional subscription ❌', 'Annual (for covered firms) ⚠️',
+            'Detailed (for covered firms) ✅', 'Global framework, not Nigeria-specific ❌',
+            'Peer-reviewed globally ✅', 'Not reproducible ❌', 'Commercial update cycle ⚠️'
+        ],
+    }
+    comp_df = pd.DataFrame(comparison)
+    st.dataframe(comp_df, hide_index=True, width='stretch')
+
+    st.markdown("""
+    <div class="insight-box">
+    <strong>Key Contribution:</strong> This research fills a critical gap by providing a transparent, 
+    reproducible, Nigeria-specific AI ESG rating framework that covers 50 NGX-listed companies 
+    with full 2020–2024 panel data — freely accessible.
     </div>
     """, unsafe_allow_html=True)
 
